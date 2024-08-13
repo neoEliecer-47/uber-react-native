@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import Main from '../components/screens/Main'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 
 export default function index() {
   return (
-    <View>
+    <SafeAreaProvider>
       <Main />
-    </View>
+    </SafeAreaProvider>
   )
 }

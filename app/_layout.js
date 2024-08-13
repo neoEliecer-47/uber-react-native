@@ -1,14 +1,17 @@
-import { Stack } from 'expo-router'
-import { View, Text } from 'react-native'
+import { Stack } from "expo-router";
+import { Provider } from "react-redux";
+import store from "../store";
 
 
 export default function _layout() {
   return (
-    <Stack screenOptions={{ headerShown: false }} >
-      <Stack.Screen 
-        name='index'
-        
-      />
-    </Stack>
-  )
+    <Provider store={store}>
+      
+        <Stack screenOptions={{ headerShown: false, }} >
+          <Stack.Screen name="index" />
+          <Stack.Screen name="mapView" />
+        </Stack>
+      
+    </Provider>
+  );
 }
