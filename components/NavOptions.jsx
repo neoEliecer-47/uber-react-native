@@ -2,6 +2,8 @@ import { Icon } from "@rneui/themed";
 import { router } from "expo-router";
 
 import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../reducers/navSlice";
 
 const data = [
   {
@@ -19,13 +21,23 @@ const data = [
 ];
 
 export default function NavOptions() {
+  const origin = useSelector(selectOrigin);
+
+  function originDetector(item) {
+    if (!origin) return alert("please, type your location");
+    router.navigate(`${item.view}`);
+  }
+
   return (
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
       horizontal
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={()=> router.navigate(`${item.view}`)} className="p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40">
+        <TouchableOpacity
+          onPress={() => originDetector(item)}
+          className="p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40"
+        >
           <View>
             <Image
               source={{
