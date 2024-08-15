@@ -10,13 +10,13 @@ const data = [
     id: "1",
     title: "Get a ride",
     image: "https://links.papareact.com/3pn",
-    view: "mapView",
+    view: "map",
   },
   {
     id: "2",
     title: "Order food",
     image: "https://links.papareact.com/28w",
-    view: "eatsView",
+    view: "eats",
   },
 ];
 
@@ -25,7 +25,7 @@ export default function NavOptions() {
 
   function originDetector(item) {
     if (!origin) return alert("please, type your location");
-    router.navigate(`${item.view}`);
+    router.navigate(`(views)/${item.view}`);
   }
 
   return (
@@ -38,7 +38,7 @@ export default function NavOptions() {
           onPress={() => originDetector(item)}
           className="p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40"
         >
-          <View>
+          <View className={`${!origin && "opacity-40"}`}>
             <Image
               source={{
                 uri: item.image,
