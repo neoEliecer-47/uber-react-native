@@ -9,17 +9,21 @@ export default function Map() {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const mapRef = useRef(null);
-  console.log({destination: destination})
+  
   useEffect(() => {
-    if (!origin || !destination) return;
+    if (!origin || !destination || !mapRef.current) return ;
+
+   setTimeout(() => {
+    mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
+      edgePadding: { top: 150, right: 50, bottom: 50, left: 50 },
+      animated: true
+    });
+   }, 1000);
 
     //zoom and fit to markers
-    mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-      edgePadding: { top: 50, right: 50, bottom: 50, left: 50 }
-    });
-  }, [origin, destination]);
+  }, [origin, destination, mapRef]);
 
-  console.log({ORIGIN: origin})
+  
 
   return (
     <MapView
