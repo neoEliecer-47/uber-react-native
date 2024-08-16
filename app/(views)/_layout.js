@@ -14,6 +14,9 @@ export default function _layout() {
         <Stack.Screen 
           name='[view]'
           component={DinamicView}
+          options={{
+            headerShown: false
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

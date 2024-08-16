@@ -2,14 +2,13 @@ import { View, Text } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_KEY } from "@env";
 import { useDispatch } from "react-redux";
-import { setDestination } from '../reducers/navSlice'
-import { router } from 'expo-router'
+import { setDestination } from "../reducers/navSlice";
+import { router } from "expo-router";
 import { useNavigation } from "@react-navigation/native";
 
 export default function NavigateCard() {
-
-    const dispatch = useDispatch()
-    const navigation = useNavigation()
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   return (
     <>
@@ -38,18 +37,21 @@ export default function NavigateCard() {
             }}
             enablePoweredByContainer={false}
             query={{
-                key: GOOGLE_MAPS_KEY,
-                language: 'en'
+              key: GOOGLE_MAPS_KEY,
+              language: "en",
             }}
-            returnKeyType='search'
+            returnKeyType="search"
             minLength={2}
-            onPress={(data, details = null)=>{
-                dispatch(setDestination({
+            onPress={(data, details = null) => {
+              console.log({2: details})
+              dispatch(
+                setDestination({
                   location: details.geometry?.location,
                   description: data.description,
-                }))
+                })
+              );
 
-                navigation.navigate('RideOptionsCard')
+              navigation.navigate("RideOptionsCard");
             }}
           />
         </View>

@@ -1,5 +1,4 @@
-import { SafeAreaView, ScrollView } from "react-native";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Screen from "../Screen";
 import Map from "../Map";
 
@@ -8,8 +7,7 @@ import RideOptionsCard from "../RideOptionsCard";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function MapView() {
-
-  const Stack = createNativeStackNavigator()
+  const Stack = createNativeStackNavigator();
 
   return (
     <Screen>
@@ -19,16 +17,19 @@ export default function MapView() {
         </View>
         <View className="h-1/2 bg-blue-500">
           <Stack.Navigator>
-            <Stack.Screen 
+            <Stack.Screen
               name="NavigateCard"
               component={NavigateCard}
               options={{
-                headerShown: false
+                headerShown: false,
               }}
             />
-            <Stack.Screen 
+            <Stack.Screen
               name="RideOptionsCard"
               component={RideOptionsCard}
+              options={{
+                headerShown: false,
+              }}
             />
           </Stack.Navigator>
         </View>
