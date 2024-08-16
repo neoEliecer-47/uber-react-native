@@ -41,9 +41,11 @@ export default function NavigateCard() {
               language: "en",
             }}
             returnKeyType="search"
+            fetchDetails={true}
             minLength={2}
             onPress={(data, details = null) => {
-              console.log({2: details})
+              // console.log({2222: details})
+              // console.log({DATA: data})
               dispatch(
                 setDestination({
                   location: details.geometry?.location,
