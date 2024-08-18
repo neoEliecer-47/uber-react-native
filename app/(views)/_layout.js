@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import DinamicView from './[view]'
@@ -9,13 +9,14 @@ export default function _layout() {
   const Stack = createNativeStackNavigator()
 
   return (
-    <NavigationContainer independent={true}>
+    <NavigationContainer independent={true} theme={DefaultTheme}>
       <Stack.Navigator>
         <Stack.Screen 
           name='[view]'
           component={DinamicView}
           options={{
-            headerShown: false
+            headerShown: false,
+            
           }}
         />
       </Stack.Navigator>

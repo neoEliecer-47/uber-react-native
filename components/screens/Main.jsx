@@ -5,6 +5,7 @@ import NavOptions from "../NavOptions";
 import Screen from "../Screen";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../../reducers/navSlice";
+import NavFavourites from "../NavFavourites";
 
 export default function Main() {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ export default function Main() {
         />
 
         <NavOptions />
+        <NavFavourites />
       </View>
     </Screen>
   );
