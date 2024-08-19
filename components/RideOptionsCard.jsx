@@ -28,10 +28,8 @@ export default function RideOptionsCard() {
   const [selectedItem, setSelectedItem] = useState(null);
   const navigation = useNavigation();
 
-
-
   return (
-    <View className="bg-white flex-grow">
+    <View className=" bg-white flex-1">
       <View className="">
         <TouchableOpacity
           className="absolute top-3 left-5 z-10 p-2 bg-gray-200 rounded-full"
@@ -64,6 +62,19 @@ export default function RideOptionsCard() {
           </TouchableOpacity>
         )}
       />
+
+      <View className="">
+        <TouchableOpacity
+          disabled={!selectedItem}
+          className={`bg-black/70 py-3 m-2 rounded-full ${
+            !selectedItem && "bg-black/20"
+          }`}
+        >
+          <Text className="text-center text-white text-xl">
+            Choose {selectedItem?.title}
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
