@@ -1,7 +1,14 @@
 import { Icon } from "@rneui/themed";
 import { router } from "expo-router";
 
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
 import { useSelector } from "react-redux";
 import { selectOrigin } from "../reducers/navSlice";
 
@@ -29,41 +36,43 @@ export default function NavOptions() {
   }
 
   return (
-    <FlatList
-      data={data}
-      keyExtractor={(item) => item.id}
-      horizontal
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={() => originDetector(item)}
-          className="p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40"
-        >
-          <View className={`${!origin && "opacity-40"}`}>
-            <Image
-              source={{
-                uri: item.image,
-              }}
-              className="w-28 h-28"
-              style={{ resizeMode: "contain" }}
-            />
-            <Text className="mt-2 text-lg font-semibold text-center">
-              {item.title}
-            </Text>
-            <Icon
-              type="antdesign"
-              name="arrowright"
-              color="white"
-              style={{
-                padding: 2,
-                backgroundColor: "black",
-                borderRadius: 9999,
-                width: 30,
-                marginTop: 16,
-              }}
-            />
-          </View>
-        </TouchableOpacity>
-      )}
-    />
+
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id}
+        horizontal
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => originDetector(item)}
+            className="p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40"
+          >
+            <View className={`${!origin && "opacity-40"}`}>
+              <Image
+                source={{
+                  uri: item.image,
+                }}
+                className="w-28 h-28"
+                style={{ resizeMode: "contain" }}
+              />
+              <Text className="mt-2 text-lg font-semibold text-center">
+                {item.title}
+              </Text>
+              <Icon
+                type="antdesign"
+                name="arrowright"
+                color="white"
+                style={{
+                  padding: 2,
+                  backgroundColor: "black",
+                  borderRadius: 9999,
+                  width: 30,
+                  marginTop: 16,
+                }}
+              />
+            </View>
+          </TouchableOpacity>
+        )}
+      />
+    
   );
 }

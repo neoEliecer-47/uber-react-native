@@ -5,11 +5,14 @@ import Map from "../Map";
 import NavigateCard from "../NavigateCard";
 import RideOptionsCard from "../RideOptionsCard";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+
 export default function MapView() {
+  
   const Stack = createNativeStackNavigator();
 
   return (
-    <Screen>
+    <Screen topSpacing={false}>
       <View className="bg-white">
         <View className="h-1/2">
           <Map />

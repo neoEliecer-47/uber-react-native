@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { GOOGLE_MAPS_KEY } from "@env";
 import NavOptions from "../NavOptions";
@@ -11,7 +11,7 @@ export default function Main() {
   const dispatch = useDispatch();
 
   return (
-    <Screen>
+    <Screen flex={true}>
       <View className="p-2">
         <Image
           source={{
@@ -45,7 +45,7 @@ export default function Main() {
                 description: data.description,
               })
             );
-            setDestination(null)
+            setDestination(null);
           }}
           returnKeyType={"search"}
           fetchDetails={true}
@@ -58,8 +58,8 @@ export default function Main() {
         />
 
         <NavOptions />
-        <NavFavourites />
       </View>
+      <NavFavourites />
     </Screen>
   );
 }

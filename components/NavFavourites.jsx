@@ -1,4 +1,10 @@
-import { View, Text, FlatList, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { Icon } from "@rneui/themed";
 
 const data = [
@@ -27,12 +33,16 @@ const data = [
     destination: "La 21 street 21",
   },
 ];
+
+const ITEM_HEIGHT = 16
 export default function NavFavourites() {
   return (
-    
-        <FlatList
+    <FlatList
       data={data}
       keyExtractor={(item) => item.id}
+      getItemLayout={(data, index)=> {
+        return { index, length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index }
+      }}
       ItemSeparatorComponent={() => <View className="bg-gray-200 h-1" />}
       renderItem={({ item: { location, destination, icon } }) => (
         <TouchableOpacity className="flex-row items-center p-5">
@@ -55,6 +65,5 @@ export default function NavFavourites() {
         </TouchableOpacity>
       )}
     />
-    
   );
 }

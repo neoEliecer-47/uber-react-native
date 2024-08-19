@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -9,7 +9,7 @@ export default function _layout() {
   const Stack = createNativeStackNavigator()
 
   return (
-    <NavigationContainer independent={true} theme={DefaultTheme}>
+    <NavigationContainer independent={true}>
       <Stack.Navigator>
         <Stack.Screen 
           name='[view]'
