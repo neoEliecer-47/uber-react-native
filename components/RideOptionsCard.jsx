@@ -2,6 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
 import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
+import { useSelector } from "react-redux";
+import { selectTravelTimeInformation } from "../reducers/navSlice";
 
 const data = [
   {
@@ -27,6 +29,18 @@ const data = [
 export default function RideOptionsCard() {
   const [selectedItem, setSelectedItem] = useState(null);
   const navigation = useNavigation();
+  const travelTimeInformation = useSelector(selectTravelTimeInformation)
+  
+  
+  function mileToKilometre(){
+    const mile = travelTimeInformation?.distance?.text
+  const stringMile = mile?.split(" ")[0]
+  const mileNumber = parseFloat(stringMile)
+
+const km = parseFloat(mileNumber * 1.609).toFixed(2)
+return km;
+  }
+  
 
   return (
     <View className=" bg-white flex-1">
@@ -37,7 +51,7 @@ export default function RideOptionsCard() {
         >
           <Icon name="chevron-left" type="fontawesome" />
         </TouchableOpacity>
-        <Text className="text-center py-5 text-xl">Select a Ride</Text>
+        <Text className="text-center py-5 text-lg">Select a Ride - {mileToKilometre()} km</Text>
       </View>
 
       <FlatList
@@ -56,7 +70,7 @@ export default function RideOptionsCard() {
             />
             <View className="-ml-6">
               <Text className="text-xl font-semibold">{item.title}</Text>
-              <Text>Travel time...</Text>
+              <Text>{travelTimeInformation?.duration?.text}</Text>
             </View>
             <Text className="text-xl">${8 * item.multiplier}</Text>
           </TouchableOpacity>
