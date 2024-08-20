@@ -72,7 +72,15 @@ return km;
               <Text className="text-xl font-semibold">{item.title}</Text>
               <Text>{travelTimeInformation?.duration?.text}</Text>
             </View>
-            <Text className="text-xl">${8 * item.multiplier}</Text>
+            <Text className="text-xl">
+
+              {
+                new Intl.NumberFormat('en-gb', {
+                  style: 'currency',
+                  currency: 'USD'
+                }).format((travelTimeInformation?.duration?.value * item.multiplier) / 150)
+              }
+            </Text>
           </TouchableOpacity>
         )}
       />
